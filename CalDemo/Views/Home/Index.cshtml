@@ -1,0 +1,59 @@
+﻿<div class="jumbotron">
+    <h1>Basic Calculator</h1>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td>
+                    Enter First Number
+                </td>
+                <td>
+                    @Html.TextBox("txtNumber1", (string)ViewBag.Req1)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Enter Second Number
+                </td>
+                <td>
+                    @Html.TextBox("txtNumber2", (string)ViewBag.Req2)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Result
+                </td>
+                <td>
+                    @Html.TextBox("txtResult", (string)ViewBag.WebResponse, new { htmlAttributes = new { @readonly = "readonly" } })
+                </td>
+            </tr>
+            <tr><td><br /></td></tr>
+            <tr>
+                <td colspan="2" align="right">
+                    <input id="btnAdd" onclick="return isInteger()" type="submit" name="Calculator" value="Add" />
+                    <input id="btnSubstract" onclick="return isInteger()" type="submit" name="Calculator" value="Substract" />
+                    <input id="btnMultiply" onclick="return isInteger()" type="submit" name="Calculator" value="Multiply" />
+                    <input id="btnDivide" onclick="return isInteger()" type="submit" name="Calculator" value="Divide" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+<script type="text/javascript">
+
+    function isInteger() {
+        var returnval = false;
+
+        input1 = document.getElementById('txtNumber1').value;
+        input2 = document.getElementById('txtNumber2').value;
+
+        if (Number.isInteger(+input1) && Number.isInteger(+input2)) {
+            returnval = true;
+        }
+        else {
+            alert('Please Enter valid integer value.')
+        }
+        return returnval;
+    }
+
+</script>
